@@ -37,7 +37,7 @@
   .display{font-family:'Barlow Condensed', sans-serif; text-transform:uppercase; letter-spacing:0.04em;}
   code, .mono{font-family:'IBM Plex Mono', monospace;}
 
-  /* ===== Title block / hero ===== */
+  
   .titleblock{
     border:1px solid var(--line);
     margin:24px;
@@ -64,7 +64,7 @@
   h1.proj-title em{color:var(--cyan); font-style:normal;}
   .proj-sub{color:var(--slate); font-size:1.05rem; margin-top:14px; max-width:640px;}
 
-  /* ===== schematic pipeline ===== */
+  
   .schematic{margin-top:36px; overflow-x:auto;}
   .schematic svg{width:100%; min-width:560px; height:auto; display:block;}
   .flow-line{stroke:var(--cyan-dim); stroke-width:2; fill:none; stroke-dasharray:6 8;
@@ -75,11 +75,11 @@
   .node-label{font-family:'IBM Plex Mono', monospace; font-size:11px; fill:var(--paper); letter-spacing:0.02em;}
   .node-sub{font-family:'IBM Plex Mono', monospace; font-size:9px; fill:var(--slate);}
 
-  /* ===== layout ===== */
+  
   .layout{display:grid; grid-template-columns:220px 1fr; gap:0; max-width:1180px; margin:0 auto; padding:0 24px 80px;}
   @media (max-width:860px){ .layout{grid-template-columns:1fr;} }
 
-  /* sidebar */
+  
   .sidebar{position:sticky; top:20px; align-self:start; height:fit-content; padding-top:8px;}
   @media (max-width:860px){
     .sidebar{position:relative; top:0; display:flex; overflow-x:auto; gap:8px; padding:12px 0; margin-bottom:8px;}
@@ -100,7 +100,7 @@
   .progress-bar{height:6px; background:var(--grid); position:relative; overflow:hidden;}
   .progress-fill{height:100%; background:var(--amber); width:0%; transition:width .35s ease;}
 
-  /* main sheets */
+  
   .sheet{
     border:1px solid var(--line); margin:20px 0 32px; padding:clamp(20px,3.5vw,40px);
     position:relative; scroll-margin-top:20px;
@@ -125,7 +125,7 @@
   .sheet ul li{margin-bottom:6px;}
   .sheet ul li b{color:var(--cyan);}
 
-  /* checklist */
+  
   .checklist{list-style:none; margin:12px 0 4px; padding:0;}
   .checklist li{
     display:flex; align-items:flex-start; gap:10px; padding:7px 0;
@@ -143,7 +143,7 @@
   .checklist label{cursor:pointer;}
   .checklist li.done label{color:var(--slate); text-decoration:line-through;}
 
-  /* code blocks */
+  
   .code-wrap{position:relative; margin:14px 0 18px;}
   pre{
     background:var(--navy-deep); border:1px solid var(--line); padding:16px 18px;
@@ -157,7 +157,7 @@
   .copy-btn:hover{color:var(--cyan); border-color:var(--cyan-dim);}
   .copy-btn.copied{color:var(--amber); border-color:var(--amber);}
 
-  /* accordion */
+  
   .accordion{border:1px solid var(--line); margin:14px 0;}
   .accordion-head{
     display:flex; justify-content:space-between; align-items:center; cursor:pointer;
@@ -169,7 +169,7 @@
   .accordion-body{max-height:0; overflow:hidden; transition:max-height .3s ease; padding:0 16px;}
   .accordion.open .accordion-body{padding:4px 16px 16px;}
 
-  /* tabs */
+  
   .tabs{display:flex; gap:4px; margin:16px 0 0; flex-wrap:wrap;}
   .tab-btn{
     font-family:'IBM Plex Mono',monospace; font-size:.78rem; padding:8px 14px;
@@ -206,12 +206,12 @@
 
   <div class="schematic">
     <svg viewBox="0 0 980 150" id="pipelineSvg">
-      <!-- connecting lines -->
+      
       <path class="flow-line" d="M120,75 L260,75"></path>
       <path class="flow-line" d="M380,75 L520,75"></path>
       <path class="flow-line" d="M640,75 L780,75"></path>
       <path class="flow-line" d="M900,75 L940,75"></path>
-      <!-- nodes -->
+      
       <g id="node-0"><rect class="node-box" x="10" y="45" width="110" height="60" rx="2"></rect>
         <text class="node-label" x="65" y="72" text-anchor="middle">DATA</text>
         <text class="node-sub" x="65" y="88" text-anchor="middle">Phase 01</text></g>
@@ -249,7 +249,7 @@
 
   <main>
 
-    <!-- PHASE 1 -->
+  
     <section class="sheet" id="phase1">
       <div class="sheet-corner">SHEET 01 / 05</div>
       <h2><span class="tag">01</span> Machine Learning Model Build</h2>
@@ -279,7 +279,7 @@
       <div class="callout"><b>Why it matters:</b> we save the whole pipeline, not just the raw model — the FastAPI backend can then call <code>predict()</code> directly on raw input without reimplementing any preprocessing.</div>
     </section>
 
-    <!-- PHASE 2 -->
+    
     <section class="sheet" id="phase2">
       <div class="sheet-corner">SHEET 02 / 05</div>
       <h2><span class="tag">02</span> FastAPI Service Layer</h2>
@@ -295,7 +295,7 @@
       <div class="callout"><b>Gotcha:</b> serving frontend + API from one FastAPI app means same-origin requests — no CORS headers to configure at all.</div>
     </section>
 
-    <!-- PHASE 3 -->
+    
     <section class="sheet" id="phase3">
       <div class="sheet-corner">SHEET 03 / 05</div>
       <h2><span class="tag">03</span> Pydantic Validation</h2>
@@ -311,7 +311,7 @@
       <div class="callout"><b>On camera:</b> send a bad request (e.g. a negative age) and show FastAPI's auto-generated 422 error — this is the moment that sells Pydantic to viewers.</div>
     </section>
 
-    <!-- PHASE 4 -->
+    
     <section class="sheet" id="phase4">
       <div class="sheet-corner">SHEET 04 / 05</div>
       <h2><span class="tag">04</span> Frontend (HTML/CSS/JS)</h2>
@@ -326,7 +326,7 @@
 
     </section>
 
-    <!-- PHASE 5 -->
+    
     <section class="sheet" id="phase5">
       <div class="sheet-corner">SHEET 05 / 05</div>
       <h2><span class="tag">05</span> Deployment — Render</h2>
@@ -350,8 +350,8 @@
 
 <script>
 (function(){
-  // ---- checklist state + progress ----
-  const phases = {1:8, 2:4, 3:0, 4:4, 5:4}; // item counts per phase (phase3 has none, counted via itself if added later)
+  
+  const phases = {1:8, 2:4, 3:0, 4:4, 5:4}; tself if added later)
   const allBoxes = Array.from(document.querySelectorAll('.checklist input[type=checkbox]'));
 
   function updateProgress(){
@@ -371,7 +371,7 @@
   });
   updateProgress();
 
-  // ---- copy buttons ----
+  
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const pre = btn.nextElementSibling;
@@ -383,7 +383,7 @@
     });
   });
 
-  // ---- accordion ----
+  
   document.querySelectorAll('.accordion-head').forEach(head => {
     head.addEventListener('click', () => {
       const acc = head.parentElement;
@@ -393,7 +393,7 @@
     });
   });
 
-  // ---- tabs ----
+  
   document.querySelectorAll('[data-tabgroup]').forEach(group => {
     const buttons = group.querySelectorAll('.tab-btn');
     buttons.forEach(btn => {
@@ -406,7 +406,7 @@
     });
   });
 
-  // ---- sidebar nav + scroll spy ----
+  
   const navItems = document.querySelectorAll('.nav-item');
   const sections = Array.from(navItems).map(n => document.getElementById(n.dataset.target));
 
