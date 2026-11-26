@@ -1,3 +1,6 @@
+/* =========================================================
+   TOKENS
+   ========================================================= */
 :root {
   --ink:        #182420;
   --ink-soft:   #4A5850;
@@ -50,6 +53,9 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* =========================================================
+   HEADER
+   ========================================================= */
 .site-header {
   padding: 64px 24px 32px;
   position: relative;
@@ -97,7 +103,9 @@ body {
   margin: 0;
 }
 
-
+/* =========================================================
+   LAYOUT
+   ========================================================= */
 .layout {
   max-width: 1180px;
   margin: 0 auto;
@@ -130,7 +138,9 @@ body {
   color: #EAF3EE;
 }
 
-
+/* =========================================================
+   FORM
+   ========================================================= */
 fieldset.group {
   border: none;
   margin: 0;
@@ -249,7 +259,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
 }
 .field.field-error .error-msg { display: block; }
 
-
+/* segmented control for stress level */
 .segmented {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -277,7 +287,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
 .seg-btn[data-value="Very High"].active { background: var(--coral); border-color: var(--coral); }
 .seg-btn[data-value="High"].active { background: #C97C3B; border-color: #C97C3B; }
 
-
+/* footer / submit */
 .form-footer {
   display: flex;
   align-items: center;
@@ -333,7 +343,9 @@ input:invalid:not(:placeholder-shown):not(:focus) {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-
+/* =========================================================
+   RESULT PANEL
+   ========================================================= */
 .result-inner {
   width: 100%;
   padding: 40px 32px;
@@ -346,7 +358,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
 
 .state { width: 100%; display: flex; flex-direction: column; align-items: center; }
 
-
+/* gauge */
 .gauge { width: 100%; max-width: 260px; overflow: visible; margin-bottom: 8px; }
 .gauge-track {
   fill: none;
@@ -380,7 +392,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
   margin: 0;
 }
 
-
+/* loading */
 .state-loading { padding: 40px 0; }
 .pulse-ring {
   width: 84px;
@@ -411,7 +423,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
 }
 .loading-copy { font-size: 13px; color: rgba(234,243,238,0.6); margin: 0; }
 
-
+/* result */
 .score-readout {
   display: flex;
   align-items: baseline;
@@ -455,7 +467,7 @@ input:invalid:not(:placeholder-shown):not(:focus) {
 .reset-btn:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.18); }
 .reset-btn:active { transform: scale(0.98); }
 
-
+/* error state */
 .state-error { padding: 28px 0; }
 .error-icon {
   width: 44px;
@@ -485,7 +497,9 @@ input:invalid:not(:placeholder-shown):not(:focus) {
   margin: 0 0 22px;
 }
 
-
+/* =========================================================
+   FOOTER
+   ========================================================= */
 .site-footer {
   max-width: 1180px;
   margin: 0 auto;
@@ -500,7 +514,9 @@ input:invalid:not(:placeholder-shown):not(:focus) {
   margin: 0;
 }
 
-
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 920px) {
   .layout { grid-template-columns: 1fr; }
   .result-panel { position: static; min-height: 420px; }

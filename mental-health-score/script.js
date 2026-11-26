@@ -1,7 +1,10 @@
+
 (() => {
   "use strict";
 
-  const API_BASE = "https://mansik-santulan-score.onrender.com";
+ 
+const API_BASE = "http://127.0.0.1:8000";
+
 
   const form = document.getElementById("predict-form");
   const submitBtn = document.getElementById("submit-btn");
@@ -20,13 +23,17 @@
   const errorLabelEl = document.getElementById("error-label");
   const errorCopyEl = document.getElementById("error-copy");
 
-  const GAUGE_ARC_LENGTH = 314; 
+  const GAUGE_ARC_LENGTH = 314; // approx pi * r(100)
+
+  // ---------------------------------------------------------
+  // Draw tick marks on both gauges (0..10, every 2 units)
+  // ---------------------------------------------------------
   function drawTicks() {
     document.querySelectorAll(".gauge-ticks").forEach((g) => {
       g.innerHTML = "";
       const cx = 120, cy = 140, rOuter = 100, rInner = 90;
       for (let i = 0; i <= 10; i += 2) {
-        const angle = Math.PI - (i / 10) * Math.PI; 
+        const angle = Math.PI - (i / 10) * Math.PI; // 180deg -> 0deg
         const x1 = cx + rOuter * Math.cos(angle);
         const y1 = cy - rOuter * Math.sin(angle);
         const x2 = cx + rInner * Math.cos(angle);
@@ -42,7 +49,9 @@
   }
   drawTicks();
 
-  
+  // ---------------------------------------------------------
+  // Segmented control (stress_level) wiring
+  // ---------------------------------------------------------
   const segGroup = document.getElementById("stress_level_group");
   const stressHiddenInput = document.getElementById("stress_level");
   segGroup.querySelectorAll(".seg-btn").forEach((btn) => {
@@ -54,7 +63,9 @@
     });
   });
 
-  
+  // ---------------------------------------------------------
+  // Field-level error helpers
+  // ---------------------------------------------------------
   function fieldWrapper(input) {
     return input.closest(".field");
   }
@@ -80,7 +91,9 @@
     form.querySelectorAll(".error-msg").forEach((m) => (m.textContent = ""));
   }
 
- 
+  // ---------------------------------------------------------
+  // Client-side validation mirroring the StudentData model
+  // ---------------------------------------------------------
   function validate(payload) {
     const errors = [];
 
@@ -117,7 +130,9 @@
     return errors;
   }
 
- 
+  // ---------------------------------------------------------
+  // Gather form data into the exact StudentData shape
+  // ---------------------------------------------------------
   function collectPayload() {
     const fd = new FormData(form);
     return {
@@ -136,7 +151,9 @@
     };
   }
 
- 
+  // ---------------------------------------------------------
+  // UI state switching
+  // ---------------------------------------------------------
   function showState(name) {
     [stateIdle, stateLoading, stateResult, stateError].forEach((el) => (el.hidden = true));
     ({ idle: stateIdle, loading: stateLoading, result: stateResult, error: stateError }[name]).hidden = false;
@@ -174,7 +191,7 @@
     scoreBandEl.textContent = label;
     scoreContextEl.textContent = context;
 
-    
+    // reset then animate the arc fill on next frame
     gaugeFill.style.transition = "none";
     gaugeFill.style.strokeDashoffset = String(GAUGE_ARC_LENGTH);
     requestAnimationFrame(() => {
@@ -192,7 +209,10 @@
     showState("error");
   }
 
-  
+  // ---------------------------------------------------------
+  // Parse FastAPI / Pydantic 422 error responses into
+  // field-level messages where possible
+  // ---------------------------------------------------------
   function applyServerValidationErrors(detail) {
     if (!Array.isArray(detail)) return false;
     let matched = false;
@@ -208,7 +228,9 @@
     return matched;
   }
 
-  
+  // ---------------------------------------------------------
+  // Submit handler
+  // ---------------------------------------------------------
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearAllErrors();
@@ -269,6 +291,7 @@
     }
   });
 
+  // live-clear errors as the user edits
   form.querySelectorAll("input, select").forEach((el) => {
     el.addEventListener("input", () => clearFieldError(el));
     el.addEventListener("change", () => clearFieldError(el));
